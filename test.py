@@ -11,6 +11,25 @@ def login_test():
     return "Login endpoint"
 
 
+# @app.route('/api/login/', methods=['POST'])
+# def login_user():
+#     try:
+#         data = request.get_json()
+
+#         username = data.get("username")
+#         password = data.get("password")
+
+#         return jsonify({
+#             "success": True,
+#             "username": username
+#         })
+
+#     except Exception as e:
+#         return jsonify({
+#             "success": False,
+#             "error": str(e)
+#         }), 500
+
 @app.route('/api/login/', methods=['POST'])
 def login_user():
     try:
@@ -19,13 +38,8 @@ def login_user():
         username = data.get("username")
         password = data.get("password")
 
-        return jsonify({
-            "success": True,
-            "username": username
-        })
-
+        if not username or not password:
+            return jsonify({"success": False, "error": "Username and password are required."}), 400
+        return jsonify({"success": True, "username": username}), 200
     except Exception as e:
-        return jsonify({
-            "success": False,
-            "error": str(e)
-        }), 500
+        return jsonify({"success": False, "error": str(e)}), 500
