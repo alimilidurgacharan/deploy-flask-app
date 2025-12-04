@@ -12,7 +12,7 @@ def login():
     return "Login endpoint"
 
 
-@app.route('login/', methods = ['Post'])
+@app.route('/login/', methods = ['POST'])
 def login_user():
     data = request.get_json()
 
