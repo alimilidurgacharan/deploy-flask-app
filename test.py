@@ -6,7 +6,7 @@ app = Flask(__name__)
 def home():
     return "Hello, World!"
 
-@app.route('/login', methods=['POST'])
+@app.route('/login/', methods=['POST'])
 def login():
     return "Login endpoint"
 
