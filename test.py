@@ -8,7 +8,7 @@ def home():
     return "Hello, World!"
 
 @app.route('/login_test/', methods=['POST'])
-def login():
+def login_test():
     return "Login endpoint"
 
 
