@@ -12,14 +12,15 @@ def login():
     return "Login endpoint"
 
 
-@app.route('/login/', methods = ['POST'])
-def login_user():
+@app.route('/login/', methods=['POST'])
+def login():
     data = request.get_json()
 
-    username = data.get("username")
-    password = data.get("password")
+    username = data.get('username')
+    password = data.get('password')
 
-    if username == "admin" and password == "password":
+    # Very basic authentication (for example only)
+    if username == "admin" and password == "123456":
         return jsonify({"message": "Login successful"}), 200
     else:
-        return jsonify({"message": "Invalid credentials"}), 401
+        return jsonify({"message": "Invalid username or password"}), 401
